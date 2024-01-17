@@ -20,7 +20,7 @@ export class ConfigurationComponent {
       </fieldset>
 
       <h3 id="heading-mapping">Blog Post ↔️ Issue Mapping</h3>
-      <p>Choose the mapping between blog posts and GitHub issues.</p>
+      <p>Choose the mapping between blog post pages and GitHub issues.</p>
       <fieldset>
         <div class="form-checkbox">
           <label>
@@ -168,9 +168,9 @@ export class ConfigurationComponent {
       mappingAttr = this.makeConfigScriptAttribute('issue-term', mapping.value);
     }
     this.script.innerHTML = this.makeConfigScript(
-      this.makeConfigScriptAttribute('repo', this.repo.value === '' ? '[ENTER REPO HERE]' : this.repo.value) + '\n' +
+      this.makeConfigScriptAttribute('repo', this.repo.value === '' ? 'owner/repo' : this.repo.value) + '\n' +
       mappingAttr + '\n' +
-      (this.label.value ? this.makeConfigScriptAttribute('label', this.label.value) + '\n' : '') +
+      (this.label.value ? this.makeConfigScriptAttribute('label', this.label.value) : '') +
       this.makeConfigScriptAttribute('theme', this.theme.value) + '\n' +
       this.makeConfigScriptAttribute('crossorigin', 'anonymous'));
   }
