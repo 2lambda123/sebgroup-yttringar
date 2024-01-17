@@ -32,7 +32,7 @@ export const reactionTypes: ReactionID[] = [
 
 let owner: string
 let repo: string
-const branch = 'master'
+const branch = 'main'
 
 export function setRepoContext(context: { owner: string; repo: string }) {
   owner = context.owner
