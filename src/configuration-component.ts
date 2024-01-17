@@ -80,14 +80,29 @@ export class ConfigurationComponent {
 			  <option value="photon-dark">Photon Dark</option>
 			</select>
 
-      <h3 id="heading-issue-label">Issue Label</h3>
+      <h3 id="heading-issue-label">Issue Label (optional)</h3>
       <p>
         Choose the label that will be assigned to issues created by Yttringar.
       </p>
       <fieldset>
         <div>
-          <label for="label">label (optional):</label><br/>
-          <input id="label" class="form-control" type="text" placeholder="Comment">
+          <label for="label">Issue Label (optional):</label><br/>
+        <p>
+          Choose the label that will be assigned to issues created by Yttringar.
+        </p>
+          <input id="label" class="custom-input" type="text" placeholder="Enter label">
+        <p class="note">
+          Label names are case sensitive.
+          The label must exist in your repo-
+          Yttringar cannot attach labels that do not exist.
+          Emoji are supported in label names.✨💬✨
+        </p>
+          <p class="note">
+            Label names are case sensitive.
+            The label must exist in your repo-
+            Yttringar cannot attach labels that do not exist.
+            Emoji are supported in label names.✨💬✨
+          </p>
           <p class="note">
             Label names are case sensitive.
             The label must exist in your repo-
