@@ -310,7 +310,7 @@ export function postComment(issueNumber: number, markdown: string) {
   request.headers.set('Accept', accept)
   return githubFetch(request).then<IssueComment>(response => {
     if (!response.ok) {
-      throw new Error('Error posting comment.')
+      throw new Error('Error posting comment: ' + response.statusText)
     }
     return response.json()
   })
