@@ -32,7 +32,7 @@ export const reactionTypes: ReactionID[] = [
 
 let owner: string
 let repo: string
-const branch = 'master'
+const branch = 'main'
 
 export function setRepoContext(context: { owner: string; repo: string }) {
   owner = context.owner
@@ -167,7 +167,7 @@ export function getNameFromUserLogin(login: string) {
   return githubFetch(req)
     .then(response => {
       if (!response.ok) {
-        throw new Error('Error fetching issue via search.')
+        throw new Error('Error fetching user or issue details.')
       }
       return response.json()
     })
@@ -225,7 +225,7 @@ export function loadCommentsPage(
   const request = commentsRequest(issueNumber, page)
   return githubFetch(request).then(response => {
     if (!response.ok) {
-      throw new Error('Error fetching comments.')
+      throw new Error('Error fetching issue comments.')
     }
     return response.json()
   })
@@ -285,7 +285,7 @@ export function postComment(issueNumber: number, markdown: string) {
   request.headers.set('Accept', accept)
   return githubFetch(request).then<IssueComment>(response => {
     if (!response.ok) {
-      throw new Error('Error posting comment.')
+      throw new Error('Error posting a new comment.')
     }
     return response.json()
   })
