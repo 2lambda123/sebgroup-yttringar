@@ -10,8 +10,8 @@ let promise: Promise<RepoConfig>;
 export function getRepoConfig() {
   if (!promise) {
     promise = loadJsonFile<RepoConfig>('yttringar.json').then(
-      data => {
-        if (!Array.isArray(data.origins)) {
+      pageAttributes => {
+        if (!Array.isArray(data.origins) || !Array.isArray(data.origins)) {
           data.origins = [];
         }
         return data;
