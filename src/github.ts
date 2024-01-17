@@ -166,13 +166,13 @@ export function loadJsonFile<T>(path: string, html = false) {
       }
       return html ? response.text() : response.json()
     })
-    .then<T>(file => {
+    .then<FileContentsResponse>(file => {
       if (html) {
         return file
       }
       const { content } = file as FileContentsResponse
-      const decoded = decodeBase64UTF8(content)
-      console.log(decoded)
+      const decoded = decodeBase64UTF8(content);
+      return JSON.parse(decoded)
 
       return JSON.parse(decoded)
     })
