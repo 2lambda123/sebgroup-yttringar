@@ -243,6 +243,12 @@ export function loadUser(): Promise<User | null> {
   })
 }
 
+import fs from 'fs';
+
+export function createErrorLogsFile(errorLogs: string) {
+  fs.writeFileSync('error-logs.txt', errorLogs);
+}
+
 export function createIssue(
   issueTerm: string,
   documentUrl: string,
