@@ -1,7 +1,13 @@
+<<<<<<< HEAD
 // Add necessary imports for dependencies used in the ConfigurationComponent class.
 import { HTMLFormElement, HTMLDivElement, HTMLInputElement, HTMLSelectElement } from '<necessary-import-path>'; 
+=======
+import { loadJsonFile } from './github';
+import { RepoConfig, getRepoConfig } from './repo-config';
+>>>>>>> origin/dependabot/npm_and_yarn/npm_and_yarn-security-group-57b71f5114
 
 export class ConfigurationComponent {
+  private repoConfig: RepoConfig;
   public readonly element: HTMLFormElement;
   private readonly script: HTMLDivElement;
   private readonly repo: HTMLInputElement;
