@@ -325,7 +325,7 @@ export async function toggleReaction(url: string, content: ReactionID) {
   postRequest.headers.set('Accept', GITHUB_ENCODING__REACTIONS_PREVIEW)
   const response = await githubFetch(postRequest)
   const reaction: Reaction = response.ok ? await response.json() : null
-  if (response.status === 201) {
+  if (response.status === 201 || response.status === 200) {
     // reaction created.
     return { reaction, deleted: false }
   }
