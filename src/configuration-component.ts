@@ -37,7 +37,7 @@ export class ConfigurationComponent {
         <div class="form-checkbox">
           <label>
             <input type="radio" value="pathname" name="mapping" checked="checked">
-            Issue title contains page pathname
+            Trigger GitHub Actions on specific events
             <p class="note">
               Yttringar will search for an issue whose title contains the blog post's pathname
               URL component. If a matching issue is not found, Yttringar will automatically
