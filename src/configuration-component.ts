@@ -12,22 +12,10 @@ export class ConfigurationComponent {
       <p>
         Choose the repository yttringar will connect to.
       </p>
-      <ol>
-        <li>Make sure the repo is public, otherwise your readers will not be able to view the issues/comments.</li>
-        <li>Make sure the <a href="https://github.com/apps/yttringar">yttringar app</a>
-          is installed on the repo, otherwise users will not be able to post comments.
-        </li>
-        <li>If your repo is a fork, navigate to it's <em>settings</em> tab and confirm
-          the <em>issues</em> feature is turned on. </li>
-      </ol>
       <fieldset>
         <div>
-          <label for="repo">repo:</label><br/>
-          <input id="repo" class="form-control" type="text" placeholder="owner/repo">
-          <p class="note">
-            A <strong>public</strong> GitHub repository. This is where the blog
-            post issues and issue-comments will be posted.
-          </p>
+          <label for="repo">Repository:</label><br/>
+          <input id="repo" class="custom-input" type="text" placeholder="Enter owner/repo">
         </div>
       </fieldset>
 
@@ -38,45 +26,24 @@ export class ConfigurationComponent {
           <label>
             <input type="radio" value="pathname" name="mapping" checked="checked">
             Issue title contains page pathname
-            <p class="note">
-              Yttringar will search for an issue whose title contains the blog post's pathname
-              URL component. If a matching issue is not found, Yttringar will automatically
-              create one the first time someone comments on your post.
-            </p>
           </label>
         </div>
         <div class="form-checkbox">
           <label>
             <input type="radio" value="url" name="mapping">
             Issue title contains page URL
-            <p class="note">
-              Yttringar will search for an issue whose title contains the blog post's URL.
-              If a matching issue is not found, Yttringar will automatically create one the first
-              time someone comments on your post.
-            </p>
           </label>
         </div>
         <div class="form-checkbox">
           <label>
             <input type="radio" value="title" name="mapping">
             Issue title contains page title
-            <p class="note">
-              Yttringar will search for an issue whose title contains the blog post's title.
-              If a matching issue is not found, Yttringar will automatically create one the first
-              time someone comments on your post.
-            </p>
           </label>
         </div>
         <div class="form-checkbox">
           <label>
             <input type="radio" value="og:title" name="mapping">
             Issue title contains page og:title
-            <p class="note">
-              Yttringar will search for an issue whose title contains the page's
-              <a href="http://ogp.me/">Open Graph</a> title meta.
-              If a matching issue is not found, Yttringar will automatically create one the first
-              time someone comments on your post.
-            </p>
           </label>
         </div>
         <div class="form-checkbox">
@@ -93,14 +60,25 @@ export class ConfigurationComponent {
           <label>
             <input type="radio" value="specific-term" name="mapping">
             Issue title contains specific term
-            <p class="note">
-              You configure Yttringar to search for an issue whose title contains a specific term of your choosing.
-              If a matching issue is not found, Yttringar will automatically create one the first
-              time someone comments on your post. The issue's title will be the term you chose.
-            </p>
           </label>
         </div>
       </fieldset>
+			<fieldset>
+			  <div>
+				<label for="label">Issue Label (optional):</label><br/>
+				<input id="label" class="custom-input" type="text" placeholder="Enter label">
+			  </div>
+			</fieldset>
+			<h3 id="heading-theme">Theme</h3>
+			<p>Choose an Yttringar theme that matches your blog.</p>
+			<select id="theme" class="form-select" aria-label="Theme">
+			  <option value="github-light">GitHub Light</option>
+			  <option value="github-dark">GitHub Dark</option>
+			  <option value="github-dark-orange">GitHub Dark Orange</option>
+			  <option value="icy-dark">Icy Dark</option>
+			  <option value="dark-blue">Dark Blue</option>
+			  <option value="photon-dark">Photon Dark</option>
+			</select>
 
       <h3 id="heading-issue-label">Issue Label</h3>
       <p>
