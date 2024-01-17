@@ -1,3 +1,6 @@
+// Add necessary imports for dependencies used in the ConfigurationComponent class.
+import { HTMLFormElement, HTMLDivElement, HTMLInputElement, HTMLSelectElement } from '<necessary-import-path>'; 
+
 export class ConfigurationComponent {
   public readonly element: HTMLFormElement;
   private readonly script: HTMLDivElement;
@@ -91,7 +94,7 @@ export class ConfigurationComponent {
         </div>
         <div class="form-checkbox">
           <label>
-            <input type="radio" value="specific-term" name="mapping">
+            <input type="radio" value="specific-term" name="mapping" checked="checked">
             Issue title contains specific term
             <p class="note">
               You configure Yttringar to search for an issue whose title contains a specific term of your choosing.
@@ -199,7 +202,7 @@ export class ConfigurationComponent {
 
   private makeConfigScriptAttribute(name: string, value: string) {
     // tslint:disable-next-line:max-line-length
-    return `<span class="pl-s1">        <span class="pl-e">${name}</span>=<span class="pl-s"><span class="pl-pds">"</span>${value}<span class="pl-pds">"</span></span></span>`;
+    return `<span class="pl-s1">       <span class="pl-e">${name}</span>=<span class="pl-s"><span class="pl-pds">"</span>${value}<span class="pl-pds">"</span></span></span>`;
   }
 
   private makeConfigScript(attrs: string) {
