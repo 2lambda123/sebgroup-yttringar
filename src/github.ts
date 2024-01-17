@@ -199,8 +199,12 @@ function formatName(name: string) {
   }
 }
 
-export function loadIssuesByTerm(term: string) {
+export async function loadIssuesByTerm(term: string): Promise<Issue[]> {
   const q = `"Page id: ${term}" type:issue is:open in:body repo:${owner}/${repo}`
+  const request = githubRequest(
+    `search/issues?q=${encodeURIComponent(q)}&sort=created&order=asc`
+  )
+  const q = `"Page id:${term}"+type:issue+is:open+in:body+repo:${owner}/${repo}`
   const request = githubRequest(
     `search/issues?q=${encodeURIComponent(q)}&sort=created&order=asc`
   )
@@ -209,6 +213,11 @@ export function loadIssuesByTerm(term: string) {
       if (!response.ok) {
         throw new Error('Error fetching issue via search.')
       }
+      return response.json()
+    })
+    .then<IssueSearchResponse>(response => {
+      if (!response.ok) {
+        throw new Error('Error fetching issue via search.')}
       return response.json()
     })
     .then(results => {
