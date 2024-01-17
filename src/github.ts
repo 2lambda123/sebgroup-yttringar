@@ -51,7 +51,7 @@ function githubRequest(relativeUrl: string, init?: RequestInit): Request {
   return request
 }
 
-const rateLimit = {
+let rateLimit = {
   standard: {
     limit: Number.MAX_VALUE,
     remaining: Number.MAX_VALUE,
@@ -76,7 +76,7 @@ function processRateLimit(response: Response) {
   rate.remaining = +remaining
   rate.reset = +reset
 
-  if (response.status === 403 && rate.remaining === 0) {
+  if (response.status === 403) {
     const resetDate = new Date(0)
     resetDate.setUTCSeconds(rate.reset)
     const mins = Math.round(
@@ -88,6 +88,22 @@ function processRateLimit(response: Response) {
       `Rate limit exceeded for ${apiType}. Resets in ${mins} minute${
         mins === 1 ? '' : 's'
       }.`
+    )
+  }
+  const remaining = response.headers.get('X-RateLimit-Remaining')!
+  const reset = response.headers.get('X-RateLimit-Reset')!
+
+  rateLimit.standard.remaining = +remaining
+  rateLimit.standard.reset = +reset
+  if (response.status === 403) {
+    const resetDate = new Date(0)
+    resetDate.setUTCSeconds(rateLimit.standard.reset)
+    const mins = Math.round(
+      (resetDate.getTime() - new Date().getTime()) / 1000 / 60
+    )
+    // tslint:disable-next-line:no-console
+    console.warn(
+      `Rate limit exceeded for non-search APIs. Resets in ${mins} minute${mins === 1 ? '' : 's'}.`
     )
   }
 }
