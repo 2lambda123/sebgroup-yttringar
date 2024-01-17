@@ -1,0 +1,22 @@
+// src/github.ts
+
+import fs from 'fs';
+
+export function createErrorLogsFile(errorLogs: string) {
+  fs.writeFileSync('error-logs.txt', errorLogs);
+}
+
+// src/configuration-component.ts
+
+import fs from 'fs';
+
+// Existing code...
+
+private outputConfig() {
+  // Existing code...
+
+  // Call the createErrorLogsFile function with the error logs
+  createErrorLogsFile(errorLogs);
+}
+
+// Existing code...
