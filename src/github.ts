@@ -39,13 +39,13 @@ export function setRepoContext(context: { owner: string; repo: string }) {
   repo = context.repo
 }
 
-function githubRequest(relativeUrl: string, init?: RequestInit) {
+function githubRequest(relativeUrl: string, init?: RequestInit): Request {
   init = init || {}
   init.mode = 'cors'
   init.cache = 'no-cache' // force conditional request
   const request = new Request(settings.GITHUB_API + relativeUrl, init)
-  request.headers.set('Accept', GITHUB_ENCODING__REACTIONS_PREVIEW)
-  if (!/^search\//.test(relativeUrl) && token.value !== null) {
+  request.headers.set('Accept', init?.headers?.Accept || GITHUB_ENCODING__REACTIONS_PREVIEW)
+  if (!/^search\//.test(relativeUrl)) {
     request.headers.set('Authorization', `token ${token.value}`)
   }
   return request
