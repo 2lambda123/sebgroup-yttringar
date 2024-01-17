@@ -37,7 +37,7 @@ export class ConfigurationComponent {
         <div class="form-checkbox">
           <label>
             <input type="radio" value="pathname" name="mapping" checked="checked">
-            Issue title contains page pathname
+            Trigger GitHub Actions on specific events
             <p class="note">
               Yttringar will search for an issue whose title contains the blog post's pathname
               URL component. If a matching issue is not found, Yttringar will automatically
@@ -203,6 +203,10 @@ export class ConfigurationComponent {
   }
 
   private makeConfigScript(attrs: string) {
+    return  `<pre><span class="pl-s1">&lt;<span class="pl-ent">script</span> <span class="pl-e">src</span>=<span class="pl-s"><span class="pl-pds">"</span><url-for-yttringar>/client.js<span class="pl-pds">"</span></span></span>
+${attrs}
+<span class='pl-s1'>&lt;/<span class='pl-ent'>script</span>&gt;</span></pre>`;
+  
     // tslint:disable-next-line:max-line-length
     return "<p> Sorry this isnt implemented yet</p>"
     // return `<pre><span class="pl-s1">&lt;<span class="pl-ent">script</span> <span class="pl-e">src</span>=<span class="pl-s"><span class="pl-pds">"</span><url-for-yttringar>/client.js<span class="pl-pds">"</span></span></span>\n${attrs}\n<span class="pl-s1">        <span class="pl-e">async</span>&gt;</span>\n<span class="pl-s1">&lt;/<span class="pl-ent">script</span>&gt;</span></pre>`;
