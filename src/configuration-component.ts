@@ -1,4 +1,8 @@
+import { loadJsonFile } from './github';
+import { RepoConfig, getRepoConfig } from './repo-config';
+
 export class ConfigurationComponent {
+  private repoConfig: RepoConfig;
   public readonly element: HTMLFormElement;
   private readonly script: HTMLDivElement;
   private readonly repo: HTMLInputElement;
