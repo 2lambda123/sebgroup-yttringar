@@ -180,16 +180,16 @@ export class ConfigurationComponent {
 
   private outputConfig() {
     const mapping = this.element.querySelector('input[name="mapping"]:checked') as HTMLInputElement;
-    let mappingAttr: string;
+    let mappingAttr:string = '';
     // tslint:disable-next-line:prefer-conditional-expression
     if (mapping.value === 'issue-number') {
       mappingAttr = this.makeConfigScriptAttribute('issue-number', '[ENTER ISSUE NUMBER HERE]');
     } else if (mapping.value === 'specific-term') {
       mappingAttr = this.makeConfigScriptAttribute('issue-term', '[ENTER TERM HERE]');
     } else {
-      mappingAttr = this.makeConfigScriptAttribute('issue-term', mapping.value);
+      mappingAttr = this.makeIssueMappingAttribute('issue-term', mapping.value);
     }
-    this.script.innerHTML = this.makeConfigScript(
+    this.script.innerHTML = this.makeYttringarConfigScript(
       this.makeConfigScriptAttribute('repo', this.repo.value === '' ? '[ENTER REPO HERE]' : this.repo.value) + '\n' +
       mappingAttr + '\n' +
       (this.label.value ? this.makeConfigScriptAttribute('label', this.label.value) + '\n' : '') +
