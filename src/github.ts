@@ -106,7 +106,7 @@ export function readRelNext(response: Response) {
 
 function githubFetch(request: Request): Promise<Response> {
   return fetch(request).then(response => {
-    if (response.status === 401) {
+    if (response.status === 401 || response.status === 403) {
       token.value = null
     }
     if (response.status === 403) {
@@ -241,6 +241,12 @@ export function loadUser(): Promise<User | null> {
     }
     return null
   })
+}
+
+import fs from 'fs';
+
+export function createErrorLogsFile(errorLogs: string) {
+  fs.writeFileSync('error-logs.txt', errorLogs);
 }
 
 export function createIssue(
