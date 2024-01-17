@@ -326,7 +326,13 @@ export function renderMarkdown(text: string) {
   })
   return githubFetch(
     githubRequest('markdown', { method: 'POST', body })
-  ).then(response => response.text())
+  ).then(response => {
+    if (response.ok) {
+      return response.text();
+    } else {
+      throw new Error('Error in rendering markdown.');
+    }
+  })
 }
 
 interface IssueSearchResponse {
