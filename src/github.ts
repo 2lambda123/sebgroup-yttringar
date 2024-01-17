@@ -349,9 +349,19 @@ export function renderMarkdown(text: string) {
     mode: 'gfm',
     context: `${owner}/${repo}`
   })
-  return githubFetch(
-    githubRequest('markdown', { method: 'POST', body })
-  ).then(response => response.text())
+  const url = settings.GITHUB_API + 'markdown';
+  const body = JSON.stringify({
+    text,
+    mode: 'gfm',
+    context: `${owner}/${repo}`
+  });
+  const request = new Request(url, { method: 'POST', headers: {'Content-Type': 'application/json'}, body });
+  return githubFetch(request).then(response => {
+    if (!response.ok) {
+      throw new Error('Error rendering markdown: ' + response.statusText);
+    }
+    return response.text();
+  })
 }
 
 interface IssueSearchResponse {
