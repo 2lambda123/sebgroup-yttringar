@@ -296,7 +296,7 @@ export function createIssue(
   request.headers.set('Authorization', `token ${token.value}`)
   return fetch(request).then<Issue>(response => {
     if (!response.ok) {
-      throw new Error('Error creating comments container issue')
+      throw new Error('Error creating issue: ' + response.statusText)
     }
     return response.json()
   })
