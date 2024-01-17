@@ -236,7 +236,7 @@ export function getIssuesPageForTermInBody(term: string) {
 }
 
 function commentsRequest(issueNumber: number, page: number) {
-  const url = `repos/${owner}/${repo}/issues/${issueNumber}/comments?page=${page}&per_page=${PAGE_SIZE}`
+  const url = `repos/${owner}/${repo}/issues/${issueNumber}/comments?page=${page}&per_page=${PAGE_SIZE}?page=${page}&per_page=${PAGE_SIZE}`
   const request = githubRequest(url)
   const accept = `${GITHUB_ENCODING__HTML_JSON},${GITHUB_ENCODING__REACTIONS_PREVIEW}`
   request.headers.set('Accept', accept)
